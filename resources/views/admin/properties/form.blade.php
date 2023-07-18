@@ -77,10 +77,18 @@
             ])
         </div>
 
+        @include('shared.select', [
+            'name' => 'options',
+            'label' => 'Options',
+            'value' => $property->options()->pluck('id'),
+            'multiple' => true,
+        ])
+
         @include('shared.checkbox', [
             'name' => 'sold',
             'label' => 'vendu',
             'value' => $property->sold,
+            'options' => $options,
         ])
         <div class="">
             <button class="btn btn-primary">

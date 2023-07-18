@@ -20,9 +20,6 @@ class OptionController extends Controller
     public function create()
     {
         $option = new Option();
-        $option->fill([
-            "surface" => 40,
-        ]);
         return view('admin.options.form', [
             'option' => $option
         ]);

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PropertyFormRequest;
-use Illuminate\Http\Request;
 use App\Models\Property;
+use App\Models\Option;
 
 
 class PropertyController extends Controller
@@ -24,17 +24,22 @@ class PropertyController extends Controller
         $property->fill([
             "surface" => 40,
         ]);
+
+        // dd(Option::pluck('name', 'id'));
+
         return view('admin.properties.form', [
-            'property' => $property
+            'property' => $property,
+            'options' => Option::pluck('name', 'id'),
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(PropertyFormRequest $request)
+    public function store(PropertyFormRequest $request, Property $property)
     {
-        $property = Property::create($request->validated());
+        $property->options()->sync($request->validated('options'));
+        $property->create($request->validated());
         return to_route('admin.property.index')->with('success', 'Nouvelle propriété enregistrée');
     }
 
@@ -44,7 +49,8 @@ class PropertyController extends Controller
     public function edit(Property $property)
     {
         return view('admin.properties.form', [
-            "property" => $property
+            "property" => $property,
+            'options' => Option::pluck('name', 'id'),
         ]);
     }
 
@@ -53,6 +59,7 @@ class PropertyController extends Controller
      */
     public function update(PropertyFormRequest $request, Property $property)
     {
+        $property->options()->sync($request->validated('options'));
         $property->update($request->validated());
         return to_route('admin.property.index')->with('success', 'Propriété mise à jour');
     }
