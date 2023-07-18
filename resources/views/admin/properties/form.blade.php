@@ -11,7 +11,7 @@
         @csrf
         @method($property->exists ? 'patch' : 'post')
 
-        <div class="">
+        <div class="col">
             @include('shared.input', [
                 'class' => 'col',
                 'label' => 'Titre du bien',
@@ -82,13 +82,13 @@
             'label' => 'Options',
             'value' => $property->options()->pluck('id'),
             'multiple' => true,
+            'options' => $options,
         ])
 
         @include('shared.checkbox', [
             'name' => 'sold',
             'label' => 'vendu',
             'value' => $property->sold,
-            'options' => $options,
         ])
         <div class="">
             <button class="btn btn-primary">
