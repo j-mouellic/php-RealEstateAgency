@@ -38,8 +38,8 @@ class PropertyController extends Controller
      */
     public function store(PropertyFormRequest $request, Property $property)
     {
-        $property->options()->sync($request->validated('options'));
         $property->create($request->validated());
+        $property->options()->sync($request->validated('options'));
         return to_route('admin.property.index')->with('success', 'Nouvelle propriété enregistrée');
     }
 

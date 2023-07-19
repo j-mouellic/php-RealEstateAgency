@@ -15,11 +15,15 @@
     <div class="container">
         <h2>Biens disponibles</h2>
         <div class="row">
-            @foreach ($properties as $property)
-                <div class="col">
+            @forelse ($properties as $property)
+                <div class="col-3">
                     @include('components.card')
                 </div>
-            @endforeach
+            @empty
+                <div class="col">
+                    <p>Aucun bien ne correspond à votre recherche</p>
+                </div>
+            @endforelse
         </div>
     </div>
 @endsection

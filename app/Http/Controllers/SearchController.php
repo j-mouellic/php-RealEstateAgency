@@ -30,6 +30,10 @@ class SearchController extends Controller
 
     public function show(Property $property)
     {
-
+        // $expectedSlug = $property->getSlug();
+        // if ($slug !== $expectedSlug) {
+        //     return to_route('property.show', ['slug' => $expectedSlug, "property" => $property]);
+        // }
+        return view("show", ["property" => $property]);
     }
 }
