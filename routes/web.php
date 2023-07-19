@@ -21,6 +21,7 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::get('/biens', [SearchController::class, 'index'])->name('property.index');
 Route::get('/biens/{property}', [SearchController::class, 'show'])->name('property.show');
+Route::post('/biens/{property}/contact', [SearchController::class, 'contact'])->name('property.contact');
 
 Route::prefix("admin")->name("admin.")->group(function () {
     Route::resource('property', PropertyController::class)->except(['show']);
