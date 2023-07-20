@@ -29,27 +29,24 @@
                 <a @class(['nav-link', 'active' => str_contains($route, 'property.')]) href="{{ route('admin.property.index') }}">Mes biens</a>
                 <a @class(['nav-link', 'active' => str_contains($route, 'option.')]) href="{{ route('admin.option.index') }}">Mes options</a>
             </div>
+            <div class="ms-auto">
+                @auth
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <form action="{{ route('logout') }}" methode="post">
+                                @csrf
+                                @method('delete')
+                                <button class="nav-link">Se déconnecter</button>
+                            </form>
+                        </li>
+                    </ul>
+                @endauth
+            </div>
         </div>
     </nav>
 
     <div class="container mt-5">
-
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
+        @include('shared.flash')
         @yield('content')
     </div>
 

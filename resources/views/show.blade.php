@@ -18,6 +18,8 @@
         <div class="mt-4">
             <h4>Contacter l'agence pour une visite</h4>
 
+            @include('shared.flash')
+
             <form action="{{ route('property.contact', $property) }}" method="post" class="vstack gap-3">
                 @csrf
                 <div class="row">
