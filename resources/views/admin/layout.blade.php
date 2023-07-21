@@ -33,7 +33,7 @@
                 @auth
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <form action="{{ route('logout') }}" methode="post">
+                            <form action="{{ route('logout') }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button class="nav-link">Se déconnecter</button>
