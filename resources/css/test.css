@@ -1,0 +1,33 @@
+.class{
+    /* raccourci + tab */
+
+    /* m10 */
+    margin: 10px;
+
+    /* p10 */
+    padding: 10px;
+
+    /* m0-10-0-10 */
+    margin: 0 10px 0 10px;
+
+    /* c */
+    color: #000;
+
+    /* db */
+    display: block;
+
+    /* bgc#fff */
+    background-color: #fff;
+
+    /* w100p */
+    width: 100%;
+
+    /* df */
+    display: flex;
+
+    /* tac */
+    text-align: center;
+
+    /* jc:c */
+    justify-content: center;
+}
